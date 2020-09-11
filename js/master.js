@@ -181,3 +181,8 @@ function handleActive(event) {
     // add active class to current item
     event.target.classList.add('active');
 }
+// Reset options button
+document.querySelector('.reset-options').onclick = function() {
+    localStorage.clear();
+    window.location.reload();
+};
