@@ -83,7 +83,7 @@ body {
     background-color: var(--main-color);
     cursor: pointer;
 }
-.settings-box .random-background span.active {
+.settings-box .option-box span.active {
     opacity: 1;
 }
 /* End Settings Box */

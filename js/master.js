@@ -25,6 +25,17 @@ if (randomBackgroundState !== null) {
         }
     });
 }
+// Check if there is bullets option in local storage
+let bulletsNavigationState = localStorage.getItem('bullets_option');
+if (bulletsNavigationState !== null) {
+    document.querySelector('.nav-bullet').style.display = bulletsNavigationState === 'yes' ? 'block' : 'none';
+    document.querySelectorAll('.bullets-navigation span').forEach(element => {
+        element.classList.remove('active');
+        if (element.dataset.bullets === bulletsNavigationState) {
+            element.classList.add('active');
+        }
+    });
+}
 // Settings box toggling
 document.querySelector('.gear-icon').onclick = function() {
     this.classList.toggle('fa-spin');
@@ -52,6 +63,18 @@ document.querySelectorAll('.random-background span').forEach(element => {
         } else {
             backgroundOption = false;
             clearInterval(backgroundInterval); 
+        }
+    });
+});
+// Check bullets navigation
+document.querySelectorAll('.bullets-navigation span').forEach(element => {
+    element.addEventListener('click',function(e) {
+        handleActive(e);
+        localStorage.setItem('bullets_option', e.target.dataset.bullets);
+        if (e.target.dataset.bullets === 'yes') {
+            document.querySelector('.nav-bullet').style.display = 'block';
+        } else {
+            document.querySelector('.nav-bullet').style.display = 'none';
         }
     });
 });
