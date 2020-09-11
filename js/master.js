@@ -34,12 +34,7 @@ document.querySelector('.gear-icon').onclick = function() {
 document.querySelectorAll('.colors-list li').forEach(li => {
     li.style.backgroundColor = li.dataset.color;
     li.addEventListener('click', (e) => {
-        // remove active class from other
-        e.target.parentElement.querySelectorAll('.active').forEach(element => {
-            element.classList.remove('active');
-        });
-        // add active class to current item
-        li.classList.add('active');
+        handleActive(e);
         // set color on root
         document.documentElement.style.setProperty('--main-color', e.target.dataset.color);
         // set color on local storage
@@ -48,15 +43,10 @@ document.querySelectorAll('.colors-list li').forEach(li => {
 });
 // Switch random background option
 document.querySelectorAll('.random-background span').forEach(element => {
-    element.addEventListener('click',function(currentElement) {
-        // remove active class from other
-        currentElement.target.parentElement.querySelectorAll('.active').forEach(e => {
-            e.classList.remove('active');
-        });
-        // add active class to current item
-        element.classList.add('active');
-        localStorage.setItem('background_option', currentElement.target.dataset.background);
-        if (currentElement.target.dataset.background === 'yes') {
+    element.addEventListener('click',function(e) {
+        handleActive(e);
+        localStorage.setItem('background_option', e.target.dataset.background);
+        if (e.target.dataset.background === 'yes') {
             backgroundOption = true;
             randomBackgrounds();
         } else {
@@ -160,3 +150,11 @@ function scrollToViews(elements) {
 scrollToViews(document.querySelectorAll('.nav-bullet .bullet'));
 // Get all links
 scrollToViews(document.querySelectorAll('.links a'));
+// Handle Active status
+function handleActive(event) {
+    event.target.parentElement.querySelectorAll('.active').forEach(element => {
+        element.classList.remove('active');
+    });
+    // add active class to current item
+    event.target.classList.add('active');
+}

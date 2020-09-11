@@ -69,8 +69,8 @@ body {
 .settings-box .option-box li.active {
     border-color:#FFF;
 }
-.settings-box .random-background .yes,
-.settings-box .random-background .no {
+.settings-box .option-box .yes,
+.settings-box .option-box .no {
     width: 50px;
     color: #FFF;
     padding: 4px 10px;
@@ -80,7 +80,7 @@ body {
     font-size: 12px;
     display: inline-block;
     opacity: .5;
-    background-color: #009688;
+    background-color: var(--main-color);
     cursor: pointer;
 }
 .settings-box .random-background span.active {
