@@ -145,3 +145,18 @@ ourGallery.forEach(img => {
         }
     });
 });
+
+function scrollToViews(elements) {
+    elements.forEach(element => {
+        element.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.querySelector(e.target.dataset.section).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+}
+// Get all bullets
+scrollToViews(document.querySelectorAll('.nav-bullet .bullet'));
+// Get all links
+scrollToViews(document.querySelectorAll('.links a'));
