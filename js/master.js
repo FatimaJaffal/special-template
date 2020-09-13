@@ -182,7 +182,30 @@ function handleActive(event) {
     event.target.classList.add('active');
 }
 // Reset options button
-document.querySelector('.reset-options').onclick = function() {
+document.querySelector('.reset-options').onclick = function(e) {
+    //stop propagation
+    e.stopPropagation();
     localStorage.clear();
     window.location.reload();
 };
+// Toggle menu
+let toggleButton = document.querySelector('.toggle-menu');
+let links = document.querySelector('.links');
+toggleButton.onclick = function() {
+    this.classList.toggle('menu-active');
+    links.classList.toggle('open');
+}
+// stop propagation on menu
+links.onclick = function(e) {
+    e.stopPropagation();
+}
+
+document.addEventListener('click',(e) => {
+    if (e.target !== toggleButton && e.target !== links) {
+        // check if menu is open
+        if (links.classList.contains('open')) {
+            toggleButton.classList.toggle('menu-active');
+            links.classList.toggle('open');
+        }
+    }
+});

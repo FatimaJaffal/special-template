@@ -175,13 +175,13 @@ body {
     padding: 15px;
     font-weight: bold;
 }
-.header-area .links {
-    list-style: none;
+.header-area .links-container {
     width: 100%;
     text-align: right;
+}
+.header-area .links {
+    list-style: none;
     padding-left: 0;
-    padding-right: 20px;
-    font-size: 15px;
 }
 .header-area .links li {
     display: inline-block;
@@ -195,6 +195,33 @@ body {
 .header-area .links li a:hover,
 .header-area .links li a.active {
     color: var(--main-color);
+}
+.header-area .toggle-menu {
+    background: none;
+    border: none;
+    width: 40px;
+    cursor: pointer;
+    margin-top: 10px;
+    display: none;
+    position: relative;
+}
+.header-area .toggle-menu.menu-active:before {
+    content: '';
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+    position: absolute;
+    bottom: -15px;
+    left: 10px
+}
+.header-area .toggle-menu:focus {
+    outline: none;
+}
+.header-area .toggle-menu span {
+    background-color: #fff;
+    display: block;
+    height: 4px;
+    margin-bottom: 4px;
 }
 .introduction-text {
     color: #FFF;
@@ -217,6 +244,33 @@ body {
     font-size: 20px;
     line-height: 1.6;
     margin: 0;
+}
+@media (max-width: 991px) { /* desktop */
+    .header-area .toggle-menu{
+        display: inline-block;
+    }
+    .header-area .links {
+        display: none;
+    }
+    .header-area .links.open {
+        background-color: #fff;
+        padding: 20px;
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 50px;
+        width: 100%;
+        border-radius: 4px;
+        text-align: left;
+    }
+    .header-area .links.open li {
+        display: block;
+        margin: 10px;
+    }
+    .header-area .links.open li a {
+        color: var(--main-color);
+        font-weight: bold;
+    }
 }
 /* End Landing Page */
 /* Start About us */
@@ -641,3 +695,25 @@ body {
     transition: .3s;
 }
 /* End Contact Us */
+/* Start Grid System */
+@media (min-width: 576px) { /* small devices => landscape phones */
+    .container {
+        max-width: 540px;
+    }
+}
+@media (min-width: 768px) { /* medium devices => tablets */
+    .container {
+        max-width: 720px;
+    }
+}
+@media (min-width: 922px) { /* desktop */
+    .container {
+        max-width: 960px;
+    }
+}
+@media (min-width: 1200px) { /* large screens */
+    .container {
+        max-width: 1140px;
+    }
+}
+/* End Grid System */
